@@ -92,5 +92,8 @@ void rgb_matrix_indicators_user(void) {
     if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
         SETC(3,1, RGB_ORANGE);
     }
+    if (host_keyboard_leds() & (1<<USB_LED_SCROLL_LOCK)) {
+        SETC(3,0, RGB_ORANGE);
+    }
 
 }
