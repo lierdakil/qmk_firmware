@@ -43,10 +43,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ),
 	[NAV] = LAYOUT_planck_mit(
     /*  0        1        2        3        4        5        6        7        8        9        10       11       */
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_ESC,  KC_TRNS, KC_TRNS, KC_PGUP, KC_UP,   KC_PGDN, KC_TRNS,
+        KC_ESC,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_UP,   KC_PGDN, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_END,  KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS         , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS         , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
         ),
 	[NUMS] = LAYOUT_planck_mit(
     /*  0        1        2      3      4        5      6        7        8        9        10     11       */
@@ -65,14 +65,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 void rgb_matrix_indicators_user(void) {
     if (IS_LAYER_ON(NAV)) {
         SETC(0,0,RGB_RED);
-        SETC(0,8,RGB_GOLD);
-        SETC(1,7,RGB_GOLD);
+        SETC(0,9,RGB_GOLD);
         SETC(1,8,RGB_GOLD);
         SETC(1,9,RGB_GOLD);
-        SETC(2,7,RGB_ORANGE);
+        SETC(1,10,RGB_GOLD);
         SETC(2,8,RGB_ORANGE);
-        SETC(0,7,RGB_CORAL);
-        SETC(0,9,RGB_CORAL);
+        SETC(2,9,RGB_ORANGE);
+        SETC(0,8,RGB_CORAL);
+        SETC(0,10,RGB_CORAL);
     }
     else if(IS_LAYER_ON(NUMS)) {
         SETC(0,4,RGB_ORANGE);
