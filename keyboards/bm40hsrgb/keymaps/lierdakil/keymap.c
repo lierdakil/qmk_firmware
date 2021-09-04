@@ -49,11 +49,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS         , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
         ),
 	[NUMS] = LAYOUT_planck_mit(
-    /*  0        1        2      3      4        5      6        7        8        9        10     11       */
-        KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NLCK, KC_P7, KC_P8,   KC_P9,   KC_PAST, KC_PSLS, KC_NO, KC_NO,
-        KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,   KC_P4, KC_P5,   KC_P6,   KC_PPLS, KC_PMNS, KC_NO, KC_NO,
-        KC_NO,   KC_NO,   KC_NO, KC_NO, KC_NO,   KC_P1, KC_P2,   KC_P3,   KC_PEQL, KC_NO,   KC_NO, KC_NO,
-        KC_PSCR, KC_PAUS, KC_NO, KC_NO, KC_NO,   KC_P0       ,   KC_PDOT, KC_PENT, KC_TRNS, KC_NO, KC_NO
+    /*  0        1        2        3        4        5        6        7        8        9      10       11       */
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PSLS, KC_P7, KC_P8,   KC_P9,   KC_PAST,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PMNS, KC_P4, KC_P5,   KC_P6,   KC_PPLS,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NLCK, KC_P1, KC_P2,   KC_P3,   KC_PEQL,
+        KC_TRNS, KC_TRNS, KC_PSCR, KC_PAUS, KC_TRNS, KC_TRNS         , KC_TRNS, KC_P0, KC_TRNS, KC_PDOT, KC_PENT
         )
 };
 
@@ -75,30 +75,33 @@ void rgb_matrix_indicators_user(void) {
         SETC(0,10,RGB_CORAL);
     }
     else if(IS_LAYER_ON(NUMS)) {
-        SETC(0,4,RGB_ORANGE);
-        SETC(0,5,RGB_GOLD);
-        SETC(0,6,RGB_GOLD);
-        SETC(0,7,RGB_GOLD);
-        SETC(1,5,RGB_GOLD);
-        SETC(1,6,RGB_GOLD);
-        SETC(1,7,RGB_GOLD);
-        SETC(2,5,RGB_GOLD);
-        SETC(2,6,RGB_GOLD);
-        SETC(2,7,RGB_GOLD);
-        SETC(3,5,RGB_GOLD);
-        SETC(3,6,RGB_GOLD);
-        SETC(3,7,RGB_CORAL);
-        SETC(3,0,RGB_CORAL);
-        SETC(3,1,RGB_CORAL);
-        SETC(0,8,RGB_ORANGE);
-        SETC(0,9,RGB_ORANGE);
-        SETC(1,8,RGB_ORANGE);
-        SETC(1,9,RGB_ORANGE);
-        SETC(2,8,RGB_ORANGE);
-        SETC(3,8,RGB_ORANGE);
+        SETC(2,7,RGB_ORANGE);
         if (host_keyboard_leds() & (1<<USB_LED_NUM_LOCK)) {
-            SETC(0,4, RGB_GREEN);
+            SETC(2,7, RGB_GREEN);
         }
+
+        SETC(0,8,RGB_GOLD);
+        SETC(0,9,RGB_GOLD);
+        SETC(0,10,RGB_GOLD);
+        SETC(1,8,RGB_GOLD);
+        SETC(1,9,RGB_GOLD);
+        SETC(1,10,RGB_GOLD);
+        SETC(2,8,RGB_GOLD);
+        SETC(2,9,RGB_GOLD);
+        SETC(2,10,RGB_GOLD);
+        SETC(3,8,RGB_GOLD);
+        SETC(3,9,RGB_RED);
+        SETC(3,10,RGB_GOLD);
+
+        SETC(3,2,RGB_CORAL);
+        SETC(3,3,RGB_CORAL);
+
+        SETC(0,7,RGB_ORANGE);
+        SETC(0,11,RGB_ORANGE);
+        SETC(1,7,RGB_ORANGE);
+        SETC(1,11,RGB_ORANGE);
+        SETC(2,11,RGB_ORANGE);
+        SETC(3,11,RGB_CHARTREUSE);
     }
 
     // status leds
