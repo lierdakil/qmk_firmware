@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, MO(CTRL), _______, _______, _______, _______, _______, _______, _______
         ),
 	[CTRL] = LAYOUT_planck_mit(
-        _______, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, KC_DEL,
+        _______, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, KC_PSLS, KC_P7, KC_P8,   KC_P9,   KC_PAST,
         _______, _______, _______, _______, _______, _______, _______, KC_PMNS, KC_P4, KC_P5,   KC_P6,   KC_PPLS,
         _______, _______, _______, _______, _______, _______, _______, KC_NLCK, KC_P1, KC_P2,   KC_P3,   KC_PEQL,
-        _______, _______, KC_PSCR, KC_PAUS, _______, _______         , _______, KC_P0, _______, KC_PDOT, KC_PENT
+        _______, KC_PSCR, KC_PAUS, _______, _______, _______         , _______, KC_P0, _______, KC_PDOT, KC_PENT
         )
 };
 
@@ -93,8 +93,8 @@ void rgb_matrix_indicators_user(void) {
         SETC(3,9,RGB_RED);
         SETC(3,10,RGB_GOLD);
 
+        SETC(3,1,RGB_CORAL);
         SETC(3,2,RGB_CORAL);
-        SETC(3,3,RGB_CORAL);
 
         SETC(0,7,RGB_ORANGE);
         SETC(0,11,RGB_ORANGE);
