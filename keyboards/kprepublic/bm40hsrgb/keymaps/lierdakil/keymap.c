@@ -63,13 +63,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case MC_CAPS:
             if (!record->tap.count) {
                 if (record->event.pressed) {
-                    register_code(KC_INT1); // Intercept hold function to send Ctrl-X
+                    register_code(KC_INT1);
                 } else {
-                    unregister_code(KC_INT1); // Intercept hold function to send Ctrl-X
+                    unregister_code(KC_INT1);
                 }
                 return false;
             }
-            return true;             // Return true for normal processing of tap keycode
+            return true;
     }
     return true;
 }
