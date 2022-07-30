@@ -15,19 +15,20 @@ enum layers {BASE, LOWER, UPPER, CTRL, NAV, NUMS};
 #define ENT LT(NAV,KC_ENT)
 #define DEL LSFT_T(KC_DEL)
 #define SPC RSFT_T(KC_SPC)
+#define MC_CAPS LT(0,KC_CAPS)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[BASE] = LAYOUT_planck_mit(
-        KC_Q,    KC_W,    KC_E,    KC_R, KC_T, KC_EQL,     KC_MINS, KC_Y, KC_U, KC_I,    KC_O,   KC_P,
-        MC_A,    MC_S,    MC_D,    MC_F, KC_G, KC_TAB,     KC_QUOT, KC_H, MC_J, MC_K,    MC_L,   MC_SCLN,
-        KC_Z,    KC_X,    KC_C,    KC_V, KC_B, KC_LGUI,    KC_RCTL, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH,
-        KC_GRV,  KC_BSLS, KC_CAPS, LWR,  DEL,  ENT               , SPC,  UPR,  TG(NUMS),KC_LBRC,KC_RBRC
+        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_EQL,  KC_MINS, KC_Y,    KC_U,     KC_I,    KC_O,   KC_P,
+        MC_A,    MC_S,    MC_D,    MC_F,    KC_G,    KC_TAB,  KC_QUOT, KC_H,    MC_J,     MC_K,    MC_L,   MC_SCLN,
+        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LGUI, KC_RCTL, KC_N,    KC_M,     KC_COMM, KC_DOT, KC_SLSH,
+        KC_GRV,  KC_BSLS, MC_CAPS,  LWR,     DEL,     ENT             , SPC    , UPR,      TG(NUMS),KC_LBRC,KC_RBRC
         ),
 	[LOWER] = LAYOUT_planck_mit(
         KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_TILD, KC_BSPC, KC_CIRC, KC_AMPR,       KC_ASTR,       KC_LPRN, KC_RPRN,
         KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_DEL,  KC_PIPE, KC_F6,   KC_UNDS,       KC_PLUS,       KC_LCBR, KC_RCBR,
         KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  _______, _______, KC_F12,  LSFT(KC_NUHS), LSFT(KC_NUBS), KC_HOME, KC_END,
-        _______, _______, KC_SLCK, _______, _______, _______, _______, MO(CTRL),      _______,       _______, _______
+        _______, _______, KC_SLCK, _______, _______, _______,          _______, MO(CTRL),      _______,       _______, _______
         ),
 	[UPPER] = LAYOUT_planck_mit(
         KC_1,    KC_2,    KC_3,     KC_4,    KC_5,    KC_GRV,  KC_BSPC, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
@@ -57,6 +58,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         )
 };
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MC_CAPS:
+            if (!record->tap.count) {
+                if (record->event.pressed) {
+                    register_code(KC_INT1); // Intercept hold function to send Ctrl-X
+                } else {
+                    unregister_code(KC_INT1); // Intercept hold function to send Ctrl-X
+                }
+                return false;
+            }
+            return true;             // Return true for normal processing of tap keycode
+    }
+    return true;
+}
 
 //layer led colors
 #define RC(r,c) (r*12+c)
